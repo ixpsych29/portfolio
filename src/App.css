@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 600;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+p {
+  margin: 0;
+}
+
+h4 {
+  margin: 0.25rem 0;
+}
+
+.content {
+  margin-bottom: 1rem;
+}
+
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+}
+
+.app-links-wrapper {
+  flex-direction: row;
+  column-gap: clamp(1rem, 2.5rem, 5rem);
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.app-bar a img {
+  width: clamp(1rem, 2.5rem, 5rem);
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.app-bar a img:hover {
+  transform: scale(1.2);
+}
+
+.date-bar {
+  position: absolute;
+  top: 0;
+  color: white;
+  font-size: clamp(8px, 14px, 5rem);
+  width: 100vw;
+  text-align: center;
+  background-color: #1d1e1d;
+  padding: 0.5rem 0;
+}
+
+.date-bar p {
+  margin: 0;
+}
+
+.terminal {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 82vh;
+  width: 75vw;
+  border-radius: 0.5rem;
+  overflow: auto; /* Ensure scrollbars appear when necessary */
+
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  /* Smooth Scrolling */
+  scroll-behavior: smooth;
+}
+
+
+
+.terminal-header {
+  background-color: #363636;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 10%;
+  z-index: 1000; /* Ensures the header stays above other content */
+}
+
+
+.terminal-title {
+  font-size: clamp(18px, 14px, 64px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circles-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  column-gap: 0.5rem !important;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+}
+
+.circles-container p {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.green-circle {
+  background-color: #30ca41;
+}
+
+.yellow-circle {
+  background-color: #fcbd2e;
+}
+
+.red-circle {
+  background-color: #fa6058;
+}
+
+.output-container {
+  margin-top: 1rem;
+  overflow: scroll !important;
+}
+
+.terminal-body {
+  position: relative;
+  padding: 2rem 1rem 1rem 1rem;
+  color: white;
+  font-size: clamp(18px, 16px, 64px);
+  line-height: clamp(16px, 22px, 75px);
+  overflow-y: scroll !important;
+}
+
+.terminal-body::-webkit-scrollbar,
+.output-container::-webkit-scrollbar,
+.terminal::-webkit-scrollbar {
+  display: none;
+}
+
+.terminal-body,
+.output-container,
+.terminal {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.highlight {
+  color: #fba834;
+}
+
+input {
+  all: unset;
+  width: --webkit-fill-available !important;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+  align-items: center;
+  width: 100%;
+  caret-color: #fba834;
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 0.3rem 0;
+}
+.command-name {
+  width: 150px;
+  margin: 0;
+}
+
+.command-description {
+  width: --webkit-fill-available;
+  margin: 0;
+}

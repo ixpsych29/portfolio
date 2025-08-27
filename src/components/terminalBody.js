@@ -18,29 +18,15 @@ const TerminalBody = () => {
   const outputContainerRef = useRef(null);
   const terminalBodyRef = useRef(null);
 
-  // Smart auto-scroll - scroll up more to show output better
+  // Always scroll to bottom when new output is added
   useEffect(() => {
-    if (outputContainerRef.current && components.length > 0) {
+    if (components.length > 0) {
       const terminalBody = terminalBodyRef.current;
       if (terminalBody) {
-        // Check if user is near the bottom (within 300px of the end)
-        const isNearBottom =
-          terminalBody.scrollHeight -
-            terminalBody.scrollTop -
-            terminalBody.clientHeight <
-          300;
-
-        if (isNearBottom) {
-          // Scroll up more to show the new output better
-          setTimeout(() => {
-            // Scroll to show the new output with some context above it
-            const scrollPosition = Math.max(
-              0,
-              terminalBody.scrollHeight - terminalBody.clientHeight - 150
-            );
-            terminalBody.scrollTop = scrollPosition;
-          }, 100);
-        }
+        // Always scroll to the bottom to show new output
+        setTimeout(() => {
+          terminalBody.scrollTop = terminalBody.scrollHeight;
+        }, 150);
       }
     }
   }, [components]);
